@@ -126,3 +126,16 @@ pub fn randomHemisphere(r: Random, normal: Vec3) Vec3 {
     const v = randomUnit(r);
     return if (dot(v, normal) > 0) v else -v;
 }
+
+pub fn randomUnitDisk(r: Random) Vec3 {
+    while (true) {
+        const p: Vec3 = .{
+            r.float(f64) * 2 - 1,
+            r.float(f64) * 2 - 1,
+            0,
+        };
+
+        if (magnitude2(p) < 1)
+            return p;
+    }
+}
